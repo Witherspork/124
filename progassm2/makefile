@@ -4,4 +4,4 @@ strassen.class: strassen.java
 Matrix.class: Matrix.java
 	javac -d . -classpath . Matrix.java
 clean:
-	rm -f *.class 
+	rm -f *.class
