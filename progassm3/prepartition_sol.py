@@ -139,4 +139,4 @@ def simulated_annealing(num_list):
 			best_solution = rand_solution
 			best_residue = rand_residue
 
-	return best_residue
+	return best_residue 
