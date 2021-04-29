@@ -48,9 +48,28 @@
 CS 124 Programming Assignment 3 \\
 \indent Owen Hakim
 \\
+\section{\textbf{Problem Definition}}
+In this programming assignment we implemented three heuristics for the Number Partition Problem which his NP-complete where the goal is the minimize the residue of the array. Residue is represented as \textit{u} where
+
+\[ u = \sum_{i = 1}^{n} s_{i} * a_{i} \] \\
+
+We implemented each of the three heuristics by calculating the residue of the generated array, and by splitting the set of numbers using the prepartitioning method. \\\\
 
 \section{\textbf{Dynamic Programming Solution}}
-\textbf{Definition:}\\
+The dynamic programming solution to the Number Partition problem runs in \textit{O(ns)} time and uses \textit{O(ns)} space, where \textit{s} is the sum of the integers in \textit{A} and \textit{n} is the length of \textit{A}. The algorithm will return 1 if the given array can be made into two subsets with equal sums (difference is 0), and 0 if it cannot. For a given array \textit{A}, let $T(m,j)$ be 1 if there is a subset of the first \textit{j} elements of \textit{A} which sums to \textit{m}. If the sum of the elements in \textit{A} is \textit{s}, then it is necessary to compute $T(\ceil{s/2}, n)$. If \textit{s} is even then this just equals $s/2$ but if \textit{s} is odd (and thus there is no perfect partition), this will tell us if it’s possible to split \textit{A} into two subsets whose sums differ by 1, which is the best we can do in the odd case. We know that $T(0, i) = 1$ for $0 \leq i \leq n$ because the empty set is a subset of every set and has a sum of zero. The following recurrence will let us calculate $T(\ceil{s/2}, n)$: \\
+
+\begin{equation}
+	T(m, j) = \begin{cases}
+		1, & \text{$T(m, j - 1} = 1$ or $T(m - A[j], j - 1) = 1$ \\
+		0, & \text{otherwise} \\
+	\end{cases}
+\end{equation}
+
+Essentially, start by figuring out if there’s a subset of the first \textit{j} elements which have a subset that sums to \textit{m}. Either the first $j − 1$ elements could contain such a subset, in which case there would be no need to include $A[j]$ in it, or the first $j − 1$ elements
+
+
+
+
 Let $\textit{A} = (a_1, a_2, ..., a_n)$ where \textit{A} is the given sequence of nonnegative integers. Let \textit{t} be the sum of all
 the elements in \textit{A}, which can be represented as  $ \sum_{i=1}^{n} a_{i} $. In this problem, \textit{A} must be divided into two sets, $\textit{A}_1$ and $\textit{A}_2$, where the sum of each set’s elements is as close to half of \textit{t} as possible. This is because for the residue to be as close to 0 as possible, each set needs to have a sum as close to half of the overall sum \textit{t} as possible. This is similar to the subset sum problem (which the number partition problem reduces to), where in this case the sum is equal to half \textit{t}. For the definition of the dynamic programming solution, I let X[i, $\floor{\frac{\textit{t}}{2}}$] be a boolean value, where it is True if there exists a subset of the first \textit{i} numbers of A that add up to $ \floor{\frac{\textit{t}}{2}} $, and False if not. \\\\
 
