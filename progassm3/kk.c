@@ -1,5 +1,10 @@
 #include "kk_helper.h"
-#include "kk_helper.c"
+#include "kk_help.c"
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <limits.h>
+#include <math.h>
 
 int main(int argc, char* argv[]){
 	if(argc != 2){
